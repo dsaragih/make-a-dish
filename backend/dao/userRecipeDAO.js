@@ -14,10 +14,9 @@ export default class recipeDAO {
         }
     }
 
-    static async getUserRecipes(user) {
+    static async getUserRecipes(name) {
         let query = {
-            "name": {$eq : user.name},
-            "user_id": {$eq : user._id}
+            "name": {$eq : name},
         }
         let search;
         try {
@@ -38,12 +37,16 @@ export default class recipeDAO {
         }
     }
 
-    static async addItem(user, date, text) {
+    static async addItem(user, title, date, ingredients, instructions, image) {
         try {
         const recipeDoc = { name: user.name,
             user_id: user._id,
+            title: title,
             date: date,
-            recipe: text, }
+            ingredients: ingredients,
+            instructions: instructions,
+            image: image
+        }
 
         return await recipe.insertOne(recipeDoc)
         } catch (e) {
@@ -52,11 +55,17 @@ export default class recipeDAO {
         }
     }
 
-    static async updateItem(recipeId, userId, text, date) {
+    static async updateItem(recipeId, userId, title, date, ingredients, instructions, image) {
         try {
         const updateResponse = await recipe.updateOne(
             { user_id: userId, _id: ObjectId(recipeId)},
-            { $set: { recipe: text, date: date  } }
+            { $set: { 
+                title: title, 
+                date: date,
+                ingredients: ingredients,
+                instructions: instructions,
+                image: image
+            } }
         )
         console.log(updateResponse)
 

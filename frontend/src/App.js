@@ -7,6 +7,8 @@ import Login from './components/login';
 import RecipeList from './components/recipe-list';
 import Recipe from './components/recipe';
 import CreateRecipe from './components/createRecipe';
+import UserRecipe from './components/userRecipe';
+import EditRecipe from './components/editRecipe';
 
 function App() {
 
@@ -71,7 +73,7 @@ function App() {
             )}
           />
           <Route 
-            path="/:id/recipe"
+            exact path="/:id/recipe"
             render={(props) => (
               <CreateRecipe {...props} user={user} />
             )}
@@ -86,6 +88,18 @@ function App() {
             path="/login"
             render={(props) => (
               <Login {...props} login={login} />
+            )}
+          />
+          <Route 
+            exact path="/:id/recipe/:recipe_id/edit"
+            render={(props) => (
+              <EditRecipe {...props} user={user} />
+            )}
+          />
+          <Route 
+            exact path="/:id/recipe/:recipe_id"
+            render={(props) => (
+              <UserRecipe {...props} user={user} />
             )}
           />
         </Switch>

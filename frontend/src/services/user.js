@@ -2,8 +2,8 @@ import http from '../http-db';
 
 class UserDataService {
 
-    getRecipes(data) {
-        return http.get('/recipe', data);
+    getRecipes(name) {
+        return http.get(`/recipe?name=${name}`);
     }
     createRecipe(data) {
         return http.post('/recipe', data)
@@ -11,8 +11,8 @@ class UserDataService {
     updateRecipe(data) {
         return http.put('/recipe', data)
     }
-    deleteRecipe(id, userId) {
-        return http.delete(`/recipe?id=${id}`, {data: {user_id: userId}})
+    deleteRecipe(recipe_id, name) {
+        return http.delete(`/recipe?name=${name}`, {data: {recipe_id: recipe_id}})
     }
 
 

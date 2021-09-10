@@ -110,6 +110,7 @@ function Cart(props) {
           <h4>{`${props.user.name}'s Cart`}</h4>
           <h5>Items in Cart: {cart.itemsInCart}</h5><br/>
           <div className="container">
+            <h5>Cart</h5>
             {cart.cartArray.length > 0 ? (
               cart.cartArray.map((item, i) => {
                 return(
@@ -128,6 +129,7 @@ function Cart(props) {
                     <div className="col">
                       <button onClick={() => handleDelete(i)}>Remove Item</button>
                     </div>
+                    <hr className="mt-3"/>
                   </div>
                 )
               })

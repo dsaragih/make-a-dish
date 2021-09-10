@@ -3,35 +3,39 @@ import recipeDAO from "../dao/userRecipeDAO.js"
 export default class recipeController {
     static async apiGetRecipeList(req, res, next) {
         try {
-            const userInfo = {
-                name: req.body.name,
-                _id: req.body.user_id
-            } 
-            const { recipeArray, totalRecipes } = await recipeDAO.getUserRecipes(userInfo);
+            const name = req.query.name;
+
+            const { recipeArray, totalRecipes } = await recipeDAO.getUserRecipes(name);
 
             if (!recipeArray) {
                 res.status(404).json({ error: "Not found" })
                 return
             }
 
-            res.json({recipes: recipeArray, totalUserRecipes: totalRecipes})
+            res.json({recipeArray: recipeArray, totalRecipes: totalRecipes})
         } catch (e) {
             res.status(500).json({error: e.message})
         }
     }
     static async apiPostRecipe(req, res, next) {
         try {
-        const recipe = req.body.recipe
+        const title = req.body.title;
+        const ingredients = req.body.ingredients;
+        const instructions = req.body.instructions;
         const userInfo = {
             name: req.body.name,
             _id: req.body.user_id
         }
+        const image = req.body.image
         const date = new Date()
 
         const reviewResponse = await recipeDAO.addItem(
             userInfo,
+            title,
             date,
-            recipe, 
+            ingredients,
+            instructions,
+            image
         )
         res.json({ status: "success" })
         } catch (e) {
@@ -42,14 +46,21 @@ export default class recipeController {
     static async apiUpdateRecipe(req, res, next) {
         try {
         const recipeId = req.body.recipe_id
-        const recipe = req.body.recipe
         const userId = req.body.user_id
         const date = new Date()
+        const title = req.body.title;
+        const ingredients = req.body.ingredients;
+        const instructions = req.body.instructions;
+        const image = req.body.image;
+
         const reviewResponse = await recipeDAO.updateItem(
             recipeId,
             userId,
-            recipe,
+            title,
             date,
+            ingredients,
+            instructions,
+            image
         )
 
         let { error } = reviewResponse
