@@ -4,12 +4,6 @@ import UserDataService from '../services/user.js';
 import { TextareaAutosize } from '@material-ui/core';
 
 
-// Restrict the recipe card to a certain number of lines and if
-// exceeds, show a bold text that says "click below to show more"
-// Create a new recipe page for the user created recipes (use userRecipe.js)
-
-// Implement a filter on recipe-list.js to filter for user created recipes.
-
 function CreateRecipe(props) {
 
   const initialRecipeList = {
@@ -24,7 +18,7 @@ function CreateRecipe(props) {
   const [newImage, setNewImage] = useState(null);
 
   const getRecipeList = () => {
-    UserDataService.getRecipes('beau')
+    UserDataService.getRecipes(props.user.name)
     .then(res => {
       console.log(res.data)
       setRecipeList(res.data);
@@ -95,9 +89,18 @@ function CreateRecipe(props) {
                           </p>
                         ) : (
                           <p className="card-text" style={{whiteSpace: 'pre-line'}}>
+                            <strong>Ingredients: </strong><br/>
                             {item.ingredients}
                           </p>
                         )}
+                      <Link className="mt-3 ml-end" to={{
+                        pathname: "recipe/" + item._id,
+                        state: {
+                          currentRecipe: item
+                        }
+                      }} aria-label="Edit your recipe" style={{backgroundColor: "transparent", border: "none", outline: "none", float: "right"}}> 
+                        Show more
+                      </Link>
                       </div>
                     </div>
                   </div>

@@ -15,8 +15,7 @@ function Cart(props) {
 
   
   const getCart = () => {
-    //console.log("from get cart " + props.user.name)
-    UserDataService.getCart('beau')
+    UserDataService.getCart(props.user.name)
     .then(res => {
       console.log(res.data)
       setCart(res.data);

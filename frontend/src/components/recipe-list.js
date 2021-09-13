@@ -14,8 +14,7 @@ function RecipeList() {
   const [searchDishType, setSearchDishType] = useState('');
   const [searchDiet, setDiet] = useState('');
   const [healthLabel, setHealthLabel] = useState('');
-
-  // Then, start on the cart, first making sure that only logged users can access their cart.
+  const [nextPage, setNextPage] = useState('');
   
 
   const onChangeSearchFood = e => {
@@ -59,7 +58,14 @@ function RecipeList() {
     url = DataServiceAppend.getHealth(healthLabel);
     console.log(url)
     const data = await fetchData(url);
-    setRecipes(data.map(x => x['recipe']))
+    setNextPage(data._links.next.href);
+    setRecipes(data['hits'].map(x => x['recipe']))
+  }
+
+  const getNextPage = async () => {
+    const data = await fetchData(nextPage);
+    setNextPage(data._links.next.href)
+    setRecipes(data['hits'].map(x => x['recipe']))
   }
 
   const extractRecipeURI = (uri) => {
@@ -190,6 +196,11 @@ function RecipeList() {
             </div>
           );
         })}
+        {Boolean(recipes.length) && (
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button className="btn btn-secondary me-md-2 mb-2" onClick={getNextPage}>Next Page &rarr;</button>
+        </div>
+        )}
       </div>
     </div>
   );

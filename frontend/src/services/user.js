@@ -2,6 +2,14 @@ import http from '../http-db';
 
 class UserDataService {
 
+    getUser(name) {
+        return http.get(`/login?name=${name}`)
+    }
+
+    registerUser(data) {
+        return http.post('/login', data)
+    }
+
     getRecipes(name) {
         return http.get(`/recipe?name=${name}`);
     }

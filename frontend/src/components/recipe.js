@@ -19,7 +19,7 @@ function Recipe(props) {
     <div className="App">
       {recipe['label'] && (
         <div>
-        <strong>{recipe['label']}</strong><nr/>
+        <strong>{recipe['label']}</strong><br/>
         <img src={recipe['image']} className="img-fluid mx-auto d-block" alt={recipe['label']}/>
         <div className="mt-3">
           <div className="row d-flex justify-content-evenly">
