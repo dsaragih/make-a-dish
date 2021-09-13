@@ -17,7 +17,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "http://https://make-a-dish.herokuapp.com/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
