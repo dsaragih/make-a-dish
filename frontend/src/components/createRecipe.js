@@ -30,6 +30,7 @@ function CreateRecipe(props) {
 
   useEffect(() => {
     getRecipeList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleAddRecipe = () => {
@@ -136,7 +137,7 @@ function CreateRecipe(props) {
               <div className="col-lg-2">
                 <strong>Upload Image (2:1)</strong>
                 <p><input type="file"  accept="image/*" name="image" id="file"  onChange={(event) => setNewImage(URL.createObjectURL(event.target.files[0]))} text="upload"/></p>
-                <p><img id="output" width="200" src={newImage}/></p>
+                <p><img id="output" width="200" src={newImage} alt={newTitle}/></p>
               </div>
               <div className="col-lg-2 position-relative">
                 <button className="btn btn-primary btn-sm position-absolute top-50 start-50" type="button" onClick={handleAddRecipe}>Add Recipe to List</button>

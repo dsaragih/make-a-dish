@@ -71,7 +71,7 @@ function RecipeList() {
   const extractRecipeURI = (uri) => {
     // From https://dev.to/benjaminadk/parse-user-input-for-urls-timestamps--hashtags-3dh4
     
-    const matches = uri.match(/(?:\s|^)?#[A-Za-z0-9\-\.\_]+(?:\s|$)/g);
+    const matches = uri.match(/(?:\s|^)?#[A-Za-z0-9\-]+(?:\s|$)/g);
     return matches[0].slice(1);
   }
 

@@ -27,6 +27,7 @@ function Cart(props) {
 
   useEffect(() => {
     getCart();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDecrease = (i) => { 

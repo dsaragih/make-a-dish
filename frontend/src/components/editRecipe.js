@@ -68,7 +68,7 @@ function EditRecipe (props) {
               <div className="col">
                 <strong>Upload New Image (2:1)</strong>
                 <p><input type="file"  accept="image/*" name="image" id="file"  onChange={(event) => setImage(URL.createObjectURL(event.target.files[0]))} text="upload"/></p>
-                <p><img id="output" width="200" src={image}/></p>
+                <p><img id="output" width="200" src={image} alt={title}/></p>
               </div>
               <div className="d-grid gap-2">
                 <button className="btn btn-success mt-3" type="button" onClick={handleEditRecipe}>Confirm Edits</button>
