@@ -4,6 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import DataServiceAppend from '../services/recipes';
 import fetchData from "../http-edamam";
 import { diet, health, cuisineType, mealType, dishType } from './options';
+import { Link } from 'react-router-dom';
  
 function RecipeList() {
 
@@ -190,7 +191,7 @@ function RecipeList() {
                       })}
                     </ul>
                   </p>
-                  <a href={`/recipes/${extractRecipeURI(recipe['uri'])}`} class="btn btn-primary">Show more</a>
+                  <Link to={`/recipes/${extractRecipeURI(recipe['uri'])}`} class="btn btn-primary">Show more</Link>
                 </div>
               </div>
             </div>
