@@ -17,3 +17,7 @@ Simple storage area wherein users can keep track of ingredients in a list format
 
 Here, users can create, update, and delete their own recipes.
 
+## Images
+
+### Top of Recipe Lookup
+![Top of Recipe Lookup](images/rlist-top.png)
