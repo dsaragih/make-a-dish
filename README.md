@@ -29,7 +29,7 @@ Here, users can create, update, and delete their own recipes.
 ![Individual Recipe Page](images/recipe.png)
 
 ### Create a Recipe Page
-![Create a Recipe Page](iamges/createrecipe.png)
+![Create a Recipe Page](images/createrecipe.png)
 
 ### Edit User Recipes
 ![Recipe Editing Page](images/editrecipe.png)
