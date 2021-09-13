@@ -7,7 +7,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.use("/", router)
-app.use("*", (req, res) => res.send('Hello from Express'))//res.status(404).json({ error: "not found"}))
+app.use("*", router)
+//app.use("*", (req, res) => res.send('Hello from Express'))//res.status(404).json({ error: "not found"}))
 
 export default app
