@@ -2,7 +2,7 @@
 https://make-a-dish.netlify.app
 
 A web application consisting of three main pages: recipe lookup, cart, and user recipe list.
-The backend was deployed on Heroku, while the frontend on Netlify. Check it out [here](https://make-a-dish.netlify.app)
+The backend was deployed on Heroku, while the frontend on Netlify. Check it out [here](https://make-a-dish.netlify.app).
 
 ## Recipe Lookup
 
