@@ -89,7 +89,7 @@ function Login (props) {
           Login
         </button>
         <div className="mt-3">
-          If you don't have an account click the button below to register
+          If you don't have an account, click the button below to register
         </div>
         <button style={{backgroundColor: "transparent"}} onClick={() => setRegister(true)}>Register</button> 
       </div>
